@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Définition des couleurs du dégradé */
+  --gradient-start-color: 236, 72, 153; /* Équivalent à from-pink-400 en RGB */
+  --gradient-end-color: 17, 98, 221; /* Équivalent à #1162dd en RGB */
+  --primary-color: 5, 81, 209; /* Équivalent à #0055D1 en RGB */
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: rgb(var(--primary-color));
+}
+
+#root, main {
+  flex: 1;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+          to bottom,
+          rgba(var(--gradient-start-color), 1),
+          rgba(var(--gradient-end-color), 1)
+  );
+  z-index: -1;
+}
+
+/* Positionnement relatif pour les éléments pour permettre la visibilité de l'arrière-plan */
+header, main, footer {
+  position: relative;
+}
+
+/* Styles supplémentaires pour le thème sombre */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: 255, 255, 255; /* Pour le texte dans le thème sombre */
+    --gradient-start-color: 33, 37, 41; /* Début du dégradé plus sombre */
+    --gradient-end-color: 17, 24, 39; /* Fin du dégradé encore plus sombre */
+  }
+
+  body {
+    color: rgb(var(--primary-color));
+  }
+
+  body::before {
+    background: linear-gradient(
+            to bottom,
+            rgba(var(--gradient-start-color), 1),
+            rgba(var(--gradient-end-color), 1)
+    );
+  }
+}

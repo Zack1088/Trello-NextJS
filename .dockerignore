@@ -1,0 +1,10 @@
+# Ignorer les fichiers et dossiers inutiles pour Docker
+node_modules
+.next
+.git
+.gitignore
+.dockerignore
+Dockerfile
+.env
+.local.env
+npm-debug.log
